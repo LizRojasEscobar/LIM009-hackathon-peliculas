@@ -11,13 +11,18 @@ const filterByTitle = (title) => {
     .then((data) => {
       let string = ' ';
       data.Search.forEach(post => {
-        string += `
-          <div class = "card"  >
-            <p>${post.Title}</p>
-            <img src="${post.Poster}" alt="image of ${post.Title}">
-            <p>Type : ${post.Type}</p>   
-            <p>Year : ${post.Year}</p>   
+        string += ` <br>
+          <div class="row">
+            <div class="col-sm-12">
+            <div class = "card" >
+            <img class="card-img-top" src="${post.Poster}" alt="image of ${post.Title}">
+            <h5 class="card-title">${post.Title}</h5>
+            <p class="card-text">Type : ${post.Type}</p>   
+            <p class="card-text">Year : ${post.Year}</p>   
           </div>
+          </div>
+          </div>
+          
         `;
       });
       return filterOutputMovies.innerHTML = string;
@@ -35,9 +40,10 @@ const allData = (title) => {
     .then((data) => {
       let string = ' ';      
       string += `
+      <div class="col-sm-4">
           <div class = "card"  >
-            <p>${data.Title}</p>
-            <img src="${data.Poster}" alt="imagen de ${data.Title}">
+            <h3 class="card-title">${data.Title}</h3>
+            <img class="card-img-top" src="${data.Poster}" alt="imagen de ${data.Title}">
             <p>Type : ${data.Type}</p>   
             <p>Director : ${data.Director}</p>  
             <p>Gender : ${data.Genre}</p> 
@@ -45,7 +51,7 @@ const allData = (title) => {
             <p>Synopsis : ${data.Plot}</p> 
             <p>Runtime : ${data.Runtime}</p> 
 
-            
+        </div>
           </div>
         `;
      
@@ -55,4 +61,3 @@ const allData = (title) => {
 search2.addEventListener('click', () => {  
   allData(imputTitle2.value);
 });
-
